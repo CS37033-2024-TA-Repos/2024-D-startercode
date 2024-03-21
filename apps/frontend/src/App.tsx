@@ -21,6 +21,8 @@ function App() {
     return (
       <div className="w-full flex flex-col px-20 gap-5">
         <h1>Welcome to your starter code.</h1>
+        <h1>Tao Zou</h1>
+        <h1>Brendan Reilly</h1>
         <Outlet />
       </div>
     );
