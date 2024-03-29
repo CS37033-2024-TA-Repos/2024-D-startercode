@@ -1607,6 +1607,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/priorityqueuejs", [\
+      ["npm:1.0.4", {\
+        "packageLocation": "./.yarn/cache/@types-priorityqueuejs-npm-1.0.4-c57bc31a74-b2cbef3bbd.zip/node_modules/@types/priorityqueuejs/",\
+        "packageDependencies": [\
+          ["@types/priorityqueuejs", "npm:1.0.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/prop-types", [\
       ["npm:15.7.11", {\
         "packageLocation": "./.yarn/cache/@types-prop-types-npm-15.7.11-a0a5a0025c-7519ff11d0.zip/node_modules/@types/prop-types/",\
@@ -3378,10 +3387,12 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["database", "workspace:packages/database"],\
           ["@prisma/client", "virtual:fe27c481e11f854f2aaf80c4760560439cddfbeba750e60d2e16a63e1f6a6a95afa15077c31c3bb85454931e3cde1f859cec18d092f611e16a968032948f7247#npm:4.15.0"],\
+          ["@types/priorityqueuejs", "npm:1.0.4"],\
           ["eslint", "npm:8.56.0"],\
           ["eslint-config-custom", "workspace:configs/eslint-config-custom"],\
           ["prettier", "npm:3.2.4"],\
           ["prettier-config-custom", "workspace:configs/prettier-config-custom"],\
+          ["priorityqueuejs", "npm:2.0.0"],\
           ["prisma", "npm:4.15.0"],\
           ["tsconfig-custom", "workspace:configs/tsconfig-custom"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
@@ -6712,6 +6723,15 @@ const RAW_RUNTIME_STATE =
           ["@jest/schemas", "npm:29.6.3"],\
           ["ansi-styles", "npm:5.2.0"],\
           ["react-is", "npm:18.2.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["priorityqueuejs", [\
+      ["npm:2.0.0", {\
+        "packageLocation": "./.yarn/cache/priorityqueuejs-npm-2.0.0-902721a7ea-94aeb915c7.zip/node_modules/priorityqueuejs/",\
+        "packageDependencies": [\
+          ["priorityqueuejs", "npm:2.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\

@@ -1216,6 +1216,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/priorityqueuejs@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "@types/priorityqueuejs@npm:1.0.4"
+  checksum: b2cbef3bbd3b2043386c0c2f9046f79a14975404bcd599a84773badfd5d1c74d2e1d57876199dd3380a871e27766210a7dfd9119f0ddaff9e7b60b4b8057a787
+  languageName: node
+  linkType: hard
+
 "@types/prop-types@npm:*, @types/prop-types@npm:^15.7.5":
   version: 15.7.11
   resolution: "@types/prop-types@npm:15.7.11"
@@ -2679,10 +2686,12 @@ __metadata:
   resolution: "database@workspace:packages/database"
   dependencies:
     "@prisma/client": "npm:4.15.0"
+    "@types/priorityqueuejs": "npm:^1.0.4"
     eslint: "npm:latest"
     eslint-config-custom: "workspace:*"
     prettier: "npm:latest"
     prettier-config-custom: "workspace:*"
+    priorityqueuejs: "npm:^2.0.0"
     prisma: "npm:4.15.0"
     tsconfig-custom: "workspace:*"
     typescript: "npm:^5.0.4"
@@ -5593,6 +5602,13 @@ __metadata:
     ansi-styles: "npm:^5.0.0"
     react-is: "npm:^18.0.0"
   checksum: dea96bc83c83cd91b2bfc55757b6b2747edcaac45b568e46de29deee80742f17bc76fe8898135a70d904f4928eafd8bb693cd1da4896e8bdd3c5e82cadf1d2bb
+  languageName: node
+  linkType: hard
+
+"priorityqueuejs@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "priorityqueuejs@npm:2.0.0"
+  checksum: 94aeb915c75b1a95efec8db83fc1d535d9a2d501fcc4e5f374cf714d76231358064caad9a1f6bb99893f94fad4a411dc9b0a3bce04c7da159119bd7bd82f75d7
   languageName: node
   linkType: hard
 
