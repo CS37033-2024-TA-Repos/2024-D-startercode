@@ -1,4 +1,4 @@
-export class mapnode {
+export class MapNode {
   //Descriptions above the constructor
   private nodeID: string;
   private xcord: number;
@@ -8,10 +8,10 @@ export class mapnode {
   private nodeType: string;
   private longName: string;
   private shortName: string;
-  private edges: mapnode[] = [];
+  private edges: MapNode[] = [];
 
   /**
-   * Constructor for mapnode
+   * Constructor for MapNode
    * @param nodeID first char team letter lowercase, rest upper with next 4 being node type, next 3 is number of that node on floor, last is floor 01, L2, L1 etc.
    * @param xcord x coordinate
    * @param ycord y coordinate
@@ -42,29 +42,29 @@ export class mapnode {
   }
 
   /**
-   * addEdge public function that adds a mapnode to the current Node Edges list
-   * @param edge the mapnode that will be added to edges
+   * addEdge public function that adds a MapNode to the current Node Edges list
+   * @param edge the MapNode that will be added to edges
    */
-  public addEdge(edge: mapnode): void {
+  public addEdge(edge: MapNode): void {
     this.edges.push(edge);
   }
 
   /**
-   * addListOfEdges adds a list of type mapnode to add to the current Node Edges list
-   * @param list the list of type mapnode that will be added to edges
+   * addListOfEdges adds a list of type MapNode to add to the current Node Edges list
+   * @param list the list of type MapNode that will be added to edges
    */
-  public addListOfEdges(list: mapnode[]) {
+  public addListOfEdges(list: MapNode[]) {
     while (list.length != 0) {
-      this.addEdge(list.pop() as mapnode);
+      this.addEdge(list.pop() as MapNode);
     }
   }
 
   /**
    * getEdges public function that returns a Node's edges (Neighbors)
    * @param(void) : None
-   * @returns this.edges which is a mapnode[] a list of all mapnode that are edges
+   * @returns this.edges which is a MapNode[] a list of all MapNode that are edges
    */
-  public getEdges(): mapnode[] {
+  public getEdges(): MapNode[] {
     return this.edges;
   }
 
