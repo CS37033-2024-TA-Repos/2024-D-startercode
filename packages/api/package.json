@@ -1,0 +1,28 @@
+{
+  "private": true,
+  "name": "api",
+  "version": "1.0.0",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "browser": "./src/index.ts",
+  "module": "true",
+  "devDependencies": {
+    "eslint": "latest",
+    "eslint-config-custom": "workspace:*",
+    "prettier": "latest",
+    "prettier-config-custom": "workspace:*",
+    "tsconfig-custom": "workspace:*",
+    "typescript": "^5.0.4",
+    "vitest": "^0.34.1"
+  },
+  "scripts": {
+    "lint": "yarn shared:prettierlint && yarn shared:eslint && yarn shared:tslint",
+    "lint:fix": "yarn shared:prettierlint:fix && yarn shared:eslint:fix && yarn shared:tslint"
+  },
+  "dependencies": {
+    "@trpc/server": "^10.45.2",
+    "database": "workspace:^",
+    "superjson": "^2.2.1",
+    "zod": "^3.22.4"
+  }
+}
