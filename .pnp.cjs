@@ -2022,7 +2022,7 @@ const RAW_RUNTIME_STATE =
           ["@vitejs/plugin-react-swc", "virtual:d3996bc66f5a97675d735c6457b44af0f25df32a5e5981f61ff7f22e93004839ccc5d56298eff651f971a908820429de35800a3f2669be95e1c0f6bb82e8a700#npm:3.5.0"],\
           ["@swc/core", "virtual:34362bd81bb3759d91347e48b1c5f7351d3b0627b37d9a377eacbf81bb5e94d73b861948c5c1b5eef049e1b092470b5fb47d7f15844652573ef4dfaeae126112#npm:1.3.104"],\
           ["@types/vite", null],\
-          ["vite", "virtual:d3996bc66f5a97675d735c6457b44af0f25df32a5e5981f61ff7f22e93004839ccc5d56298eff651f971a908820429de35800a3f2669be95e1c0f6bb82e8a700#npm:4.5.1"]\
+          ["vite", "virtual:d3996bc66f5a97675d735c6457b44af0f25df32a5e5981f61ff7f22e93004839ccc5d56298eff651f971a908820429de35800a3f2669be95e1c0f6bb82e8a700#npm:4.5.3"]\
         ],\
         "packagePeers": [\
           "@types/vite",\
@@ -4481,7 +4481,7 @@ const RAW_RUNTIME_STATE =
           ["tailwindcss", "npm:3.4.1"],\
           ["tsconfig-custom", "workspace:configs/tsconfig-custom"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
-          ["vite", "virtual:d3996bc66f5a97675d735c6457b44af0f25df32a5e5981f61ff7f22e93004839ccc5d56298eff651f971a908820429de35800a3f2669be95e1c0f6bb82e8a700#npm:4.5.1"],\
+          ["vite", "virtual:d3996bc66f5a97675d735c6457b44af0f25df32a5e5981f61ff7f22e93004839ccc5d56298eff651f971a908820429de35800a3f2669be95e1c0f6bb82e8a700#npm:4.5.3"],\
           ["vite-plugin-eslint", "virtual:d3996bc66f5a97675d735c6457b44af0f25df32a5e5981f61ff7f22e93004839ccc5d56298eff651f971a908820429de35800a3f2669be95e1c0f6bb82e8a700#npm:1.8.1"],\
           ["vitest", "virtual:281b7ec5658d805f88196484313c874810ad4b28fdb3886a7f2b6292faec9bee3b9a92af4348cfaefb8b484dd7e409e815eac63879fbb0501eb0b5d3afa613d1#npm:0.34.6"]\
         ],\
@@ -8456,6 +8456,13 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
+      ["npm:4.5.3", {\
+        "packageLocation": "./.yarn/cache/vite-npm-4.5.3-5cedc7cb8f-82efe1bc6d.zip/node_modules/vite/",\
+        "packageDependencies": [\
+          ["vite", "npm:4.5.3"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
       ["npm:5.0.11", {\
         "packageLocation": "./.yarn/cache/vite-npm-5.0.11-d5457a8b86-f1a8fea35e.zip/node_modules/vite/",\
         "packageDependencies": [\
@@ -8580,10 +8587,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["virtual:d3996bc66f5a97675d735c6457b44af0f25df32a5e5981f61ff7f22e93004839ccc5d56298eff651f971a908820429de35800a3f2669be95e1c0f6bb82e8a700#npm:4.5.1", {\
-        "packageLocation": "./.yarn/__virtual__/vite-virtual-e439e57f48/0/cache/vite-npm-4.5.1-567bbcf9ff-2ea9c030a5.zip/node_modules/vite/",\
+      ["virtual:d3996bc66f5a97675d735c6457b44af0f25df32a5e5981f61ff7f22e93004839ccc5d56298eff651f971a908820429de35800a3f2669be95e1c0f6bb82e8a700#npm:4.5.3", {\
+        "packageLocation": "./.yarn/__virtual__/vite-virtual-da14a7aec2/0/cache/vite-npm-4.5.3-5cedc7cb8f-82efe1bc6d.zip/node_modules/vite/",\
         "packageDependencies": [\
-          ["vite", "virtual:d3996bc66f5a97675d735c6457b44af0f25df32a5e5981f61ff7f22e93004839ccc5d56298eff651f971a908820429de35800a3f2669be95e1c0f6bb82e8a700#npm:4.5.1"],\
+          ["vite", "virtual:d3996bc66f5a97675d735c6457b44af0f25df32a5e5981f61ff7f22e93004839ccc5d56298eff651f971a908820429de35800a3f2669be95e1c0f6bb82e8a700#npm:4.5.3"],\
           ["@types/less", null],\
           ["@types/lightningcss", null],\
           ["@types/node", "npm:20.11.5"],\
@@ -8704,7 +8711,7 @@ const RAW_RUNTIME_STATE =
           ["@types/vite", null],\
           ["eslint", "npm:8.56.0"],\
           ["rollup", "npm:2.79.1"],\
-          ["vite", "virtual:d3996bc66f5a97675d735c6457b44af0f25df32a5e5981f61ff7f22e93004839ccc5d56298eff651f971a908820429de35800a3f2669be95e1c0f6bb82e8a700#npm:4.5.1"]\
+          ["vite", "virtual:d3996bc66f5a97675d735c6457b44af0f25df32a5e5981f61ff7f22e93004839ccc5d56298eff651f971a908820429de35800a3f2669be95e1c0f6bb82e8a700#npm:4.5.3"]\
         ],\
         "packagePeers": [\
           "@types/vite",\
