@@ -1,1 +1,3 @@
-export * from "../.prisma/client";
+import { AppDataSource } from "./AppDataSource";
+
+export { AppDataSource };
