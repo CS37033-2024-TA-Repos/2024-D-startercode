@@ -2,7 +2,7 @@ import createError, { HttpError } from "http-errors";
 import express, { Express, NextFunction, Request, Response } from "express";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
-import exampleRouter from "./routes/example.ts";
+import exampleRouter from "./routes/example";
 
 const app: Express = express(); // Setup the backend
 

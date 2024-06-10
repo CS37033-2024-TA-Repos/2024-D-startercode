@@ -1,8 +1,8 @@
-import app from "../app.ts";
+import app from "../app";
 import http from "http";
 import { AddressInfo } from "net";
 import { createHttpTerminator } from "http-terminator";
-import { AppDataSource } from "database/src";
+import AppDataSource from "database/src/data-source";
 
 // Attempt a database connection
 console.info("Connecting to database...");

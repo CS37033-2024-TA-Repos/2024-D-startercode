@@ -1,15 +1,15 @@
 {
-  "extends": "tsconfig-custom/tsconfig.base.json",
-  "compilerOptions": {
-    "lib": ["es5", "es6"],
-    "target": "esNext",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "strictPropertyInitialization": false,
-    "sourceMap": true
-  }
+   "compilerOptions": {
+      "lib": [
+         "es2021"
+      ],
+      "target": "es2021",
+      "module": "es2022",
+      "moduleResolution": "node",
+      "allowSyntheticDefaultImports": true,
+      "outDir": "./build",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "sourceMap": true
+   }
 }
-
-

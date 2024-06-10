@@ -8,3 +8,5 @@ export default class Highscore {
     @Column({type:"integer",nullable:false})
     score: number;
 }
+
+

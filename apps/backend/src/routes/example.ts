@@ -1,8 +1,6 @@
+import AppDataSource from "database/src/data-source";
 import express, { Router, Request, Response } from "express";
-import { AppDataSource } from "database/src/AppDataSource.ts";
-
-import Highscore from "database/src/entity/Highscore.ts";
-
+import Highscore from "../../../../packages/database/src/entity/Highscore";
 const router: Router = express.Router();
 
 router.post("/", async function (req: Request, res: Response) {

@@ -2,7 +2,7 @@
    "name": "database",
    "version": "0.0.1",
    "description": "Awesome project developed with TypeORM.",
-   "type": "commonjs",
+   "type": "module",
    "devDependencies": {
       "@types/node": "^16.11.10",
       "ts-node": "10.9.1",
@@ -14,7 +14,7 @@
       "typeorm": "0.3.20"
    },
    "scripts": {
-      "start": "ts-node src/index.ts",
-      "typeorm": "typeorm-ts-node-commonjs"
+      "start": "node --loader ts-node/esm src/index.ts",
+      "typeorm": "typeorm-ts-node-esm"
    }
 }

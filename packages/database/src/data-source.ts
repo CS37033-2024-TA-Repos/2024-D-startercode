@@ -1,11 +1,7 @@
-import  "reflect-metadata";
+import "reflect-metadata";
 import { DataSource } from "typeorm";
-import Highscore from "./entity/Highscore";
-import * as process from "node:process";
 
-
-
-export const AppDataSource = new DataSource({
+ const AppDataSource = new DataSource({
     type: "postgres",
     host: process.env.POSTGRES_HOST!,
     port: parseInt(process.env.POSTGRES_PORT!),
@@ -14,8 +10,9 @@ export const AppDataSource = new DataSource({
     database: process.env.POSTGRES_DB!,
     synchronize: true,
     logging: false,
-    entities: [Highscore], // put your entitys here
-    migrations: [],
+    entities: ["./entity/**/*.{ts,js}"],
+    migrations: ["./migrations/**/*.{ts,js}"],
     subscribers: [],
 });
 
+export default AppDataSource;
