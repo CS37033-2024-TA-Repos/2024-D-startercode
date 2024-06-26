@@ -1,8 +1,8 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
+  "tasks": {
     "dependencies": {
-      "inputs": [],
+      "inputs": [".env"],
       "outputs": []
     },
     "lint": {
@@ -17,7 +17,6 @@
     "dev": {
       "dependsOn": ["^build:dev"],
       "cache": false,
-      "dotEnv": [".env.development.local", ".env.development", ".env.local", ".env"],
       "persistent": true
     },
     "deploy": {
@@ -26,6 +25,8 @@
       "persistent": true
     },
     "build": {
+      "inputs": ["./.env"],
+      "env": ["BACKEND_PORT","FRONTEND_PORT","BACKEND_SOURCE","BACKEND_SOURCE","POSTGRES_PASSWORD","POSTGRES_DB","POSTGRES_PORT","POSTGRES_HOST","POSTGRES_URL"],
       "dependsOn": ["^dependencies", "^build"],
       "outputs": ["build/**"]
     },
