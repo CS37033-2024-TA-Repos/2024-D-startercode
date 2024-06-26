@@ -2,20 +2,10 @@ import app from "../app";
 import http from "http";
 import { AddressInfo } from "net";
 import { createHttpTerminator } from "http-terminator";
-import AppDataSource from "database/src/data-source";
 
 // Attempt a database connection
 console.info("Connecting to database...");
 // This intrinsically connects to the database
-AppDataSource.initialize()
-  .then(() => {
-    console.log("Successfully connected to the database");
-  })
-  .catch((error) => {
-    console.error(`Unable to establish database connection:
-  ${error}`);
-    process.exit(1); // Then exit
-  });
 
 // Get port from environment and store in Express
 const port: string | undefined = process.env.BACKEND_PORT;

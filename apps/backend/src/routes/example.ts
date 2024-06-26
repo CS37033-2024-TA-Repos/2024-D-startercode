@@ -1,6 +1,7 @@
 import AppDataSource from "database/src/data-source";
 import express, { Router, Request, Response } from "express";
 import Highscore from "../../../../packages/database/src/entity/Highscore";
+import DataBaseSingleton from "../bin/DataBaseSingleton.ts";
 const router: Router = express.Router();
 
 router.post("/", async function (req: Request, res: Response) {
@@ -10,7 +11,7 @@ router.post("/", async function (req: Request, res: Response) {
     // Attempt to create in the database
     const savedScore = new Highscore();
     savedScore.score = highScoreAttempt.score;
-    await AppDataSource.manager.save(savedScore);
+    await DataBaseSingleton.useDb().manager.save(savedScore);
     console.info("Successfully saved high score attempt"); // Log that it was successful
   } catch (error) {
     // Log any failures
