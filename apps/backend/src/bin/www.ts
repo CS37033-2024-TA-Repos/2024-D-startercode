@@ -2,8 +2,6 @@ import app from "../app";
 import http from "http";
 import { AddressInfo } from "net";
 import { createHttpTerminator } from "http-terminator";
-const dotenv = require('dotenv')
-dotenv.config();
 // Attempt a database connection
 console.info("Connecting to database...");
 // This intrinsically connects to the database

@@ -8,9 +8,11 @@
     "type": "git",
     "url": ""
   },
+  "packageManager": "npm@10.5.0",
   "scripts": {
     "fix": "node scripts/fix.mjs",
-    "dev": "dotenv -e ./.env -- turbo run dev --env-mode=loose",
+    "dev": "dotenv -e ./env/.env -c ./env./.env.local -- turbo run dev --env-mode=loose",
+    "dev-wpi": "dotenv -e ./env/.env -c ./env/.env.wpi -- turbo run dev --env-mode=loose",
     "dev:docker": "docker-compose -f docker-compose.dev.yaml up --build --renew-anon-volumes -d",
     "db": "docker-compose -f docker-compose.db.yaml up --build",
     "dev:stop": "docker-compose -f docker-compose.dev.yaml down --volumes --rmi local",
