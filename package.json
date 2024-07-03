@@ -44,7 +44,6 @@
   },
   "dependencies": {
     "@types/node": "^20.14.9",
-    "@yarnpkg/pnpify": "^4.0.0-rc.45",
     "database": "^",
     "dotenv": "^16.4.5",
     "dotenv-cli": "^7.4.0",
