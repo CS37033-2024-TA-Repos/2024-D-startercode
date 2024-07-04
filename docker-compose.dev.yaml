@@ -18,7 +18,7 @@ x-arguments: &dev-args
   FRONTEND_PORT: &front-port 3000 # Port for the frontend (exposed)
   BACKEND_SOURCE: http://backend # Backend URL (points to the backend container)
 
-# This may seem insecure, but the DB container isn't exposed outside of docker, so it doesn't
+# This may seem insecure, but the DB container isn't exposed outside of compose-files, so it doesn't
 # matter since NOBODY except for other containers has access ot it
 x-db-info: &db-args
   POSTGRES_USER: dev
@@ -41,7 +41,7 @@ services:
     # Use the standard Dockerfile
     build:
       # Taken from root
-      context: .
+      context: ..
       # Use the dev-args (defined above)
       args: *dev-args
       # Use the dev-frontend stage
@@ -75,7 +75,7 @@ services:
     # Use the standard Dockerfile
     build:
       # Taken from root
-      context: .
+      context: ..
       # Use the dev-args (defined above), along with the DB info, port, and URL
       args:
         <<: [*dev-args, *db-loc, *db-args]
@@ -84,16 +84,15 @@ services:
     # Mount the backend on the host, ignore frontend and node_modules (the turbo cache)
     volumes:
       - ./:/app
-      - /app/apps/backend/node_modules/
-      - /app/apps/backend/.turbo/
-      - /app/apps/frontend/node_modules/
-      - /app/apps/frontend/.turbo/
-      - /app/node_modules/
-      - /app/packages/common/.turbo/
-      - /app/packages/common/node_modules/
-      - /app/packages/database/.turbo
-      - /app/packages/database/node_modules
-      - /app/packages/database/.prisma
+      - ./app/apps/backend/node_modules/
+      - ./app/apps/backend/.turbo/
+      - ./app/apps/frontend/node_modules/
+      - ./app/apps/frontend/.turbo/
+      - ./app/node_modules/
+      - ./app/packages/common/.turbo/
+      - ./app/packages/common/node_modules/
+      - ./app/packages/database/.turbo
+      - ./app/packages/database/node_modules
     # The backend depends on the database being functional
     depends_on:
       - database

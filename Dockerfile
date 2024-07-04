@@ -21,7 +21,7 @@ WORKDIR /$WORKDIR
 # Base level installer for packages and files
 FROM base AS installer
 WORKDIR /$WORKDIR
-COPY . /$WORKDIR
+COPY .. /$WORKDIR
 
 
 # Production basics (ports, env, etc)
@@ -52,7 +52,7 @@ WORKDIR /$WORKDIR
 RUN npm install --production
 
 # This creates a trimmed image that is frontend and its dependencies only
-RUN npx turbo prune --scope=frontend --docker
+RUN npx turbo prune --scope=frontend --compose-files
 
 
 # Production front builder. Creates a maximally trimmed out image
@@ -66,7 +66,7 @@ RUN rm -r apps/backend/tests
 RUN npm install --production
 
 # This creates a trimmed image that is frontend and its dependencies only
-RUN npx turbo prune --scope=backend --docker
+RUN npx turbo prune --scope=backend --compose-files
 
 
 

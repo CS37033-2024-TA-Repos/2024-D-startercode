@@ -30,8 +30,8 @@ services:
   traefik:
     image: traefik:latest
     command:
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
+      - "--providers.compose-files=true"
+      - "--providers.compose-files.exposedbydefault=false"
 
       # This is what will actually be used
       - "--entrypoints.websecure.address=:443"
@@ -54,7 +54,7 @@ services:
       - "443:443"
     # Traefik requirement
     volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "/var/run/compose-files.sock:/var/run/compose-files.sock:ro"
       # Mount the certificate, so that we don't try to renew the cert every time we start up
       - acme_cert:/etc/traefik/acme
     restart: always
@@ -75,7 +75,7 @@ services:
       <<: *prod-args
     build:
       # Taken from our github repo
-      context: .
+      context: ..
       args:
         <<: *prod-args
       # Use the prod-frontend stage
@@ -108,7 +108,7 @@ services:
       <<: [ *prod-args, *db-args, *db-loc ]
     build:
       # Taken from our github repo
-      context: .
+      context: ..
       args:
         # Ignore the warnings, this just merges those three
         <<: [*prod-args, *db-args, *db-loc]
