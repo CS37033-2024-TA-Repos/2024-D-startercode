@@ -1,15 +1,17 @@
+import AppDataSource from "database/src/data-source";
 import express, { Router, Request, Response } from "express";
-import { Prisma } from "database";
-import PrismaClient from "../bin/database-connection.ts";
-
+import Highscore from "../../../../packages/database/src/entity/Highscore";
+import DataBaseSingleton from "../bin/DataBaseSingleton.ts";
 const router: Router = express.Router();
 
 router.post("/", async function (req: Request, res: Response) {
-  const highScoreAttempt: Prisma.HighScoreCreateInput = req.body;
+  const highScoreAttempt: { score: number; time: string } = req.body;
   // Attempt to save the high score
   try {
     // Attempt to create in the database
-    await PrismaClient.highScore.create({ data: highScoreAttempt });
+    const savedScore = new Highscore();
+    savedScore.score = highScoreAttempt.score;
+    await DataBaseSingleton.useDb().manager.save(savedScore);
     console.info("Successfully saved high score attempt"); // Log that it was successful
   } catch (error) {
     // Log any failures
@@ -26,11 +28,7 @@ router.post("/", async function (req: Request, res: Response) {
 // Whenever a get request is made, return the high score
 router.get("/", async function (req: Request, res: Response) {
   // Fetch the high score from Prisma
-  const highScore = await PrismaClient.highScore.findFirst({
-    orderBy: {
-      score: "desc",
-    },
-  });
+  const highScore = await AppDataSource.manager.findOne(Highscore, {});
 
   // If the high score doesn't exist
   if (highScore === null) {

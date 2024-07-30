@@ -1,10 +1,9 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "extends": ["//"],
-  "pipeline": {
+  "tasks": {
     "dev": {
-      "dependsOn": ["database#db:push", "^build:dev"],
-      "env": ["PORT"]
+      "dependsOn": ["^build:dev"]
     },
     "deploy": {
       "env": ["PORT"]

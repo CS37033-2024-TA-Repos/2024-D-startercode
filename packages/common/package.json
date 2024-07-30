@@ -5,10 +5,10 @@
   "module": "true",
   "devDependencies": {
     "eslint": "latest",
-    "eslint-config-custom": "workspace:*",
+    "eslint-config-custom": "*",
     "prettier": "latest",
-    "prettier-config-custom": "workspace:*",
-    "tsconfig-custom": "workspace:*",
+    "prettier-config-custom": "*",
+    "tsconfig-custom": "*",
     "typescript": "^5.0.4",
     "vitest": "^0.34.1"
   },

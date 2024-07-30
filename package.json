@@ -4,26 +4,21 @@
   "version": "1.0.0",
   "description": "",
   "license": "UNLICENSED",
-  "workspaces": [
-    "apps/*",
-    "configs/*",
-    "packages/*"
-  ],
   "repository": {
     "type": "git",
     "url": ""
   },
   "scripts": {
     "fix": "node scripts/fix.mjs",
-    "dev": "yarn run dotenv -e .env -- turbo run dev",
+    "dev": "dotenv -e ./.env -- turbo run dev --env-mode=loose",
     "dev:docker": "docker-compose -f docker-compose.dev.yaml up --build --renew-anon-volumes -d",
     "db": "docker-compose -f docker-compose.db.yaml up --build",
     "dev:stop": "docker-compose -f docker-compose.dev.yaml down --volumes --rmi local",
     "deploy": "docker-compose -f docker-compose.prod.yaml up --build -d",
     "deploy:stop": "docker-compose -f docker-compose.prod.yaml down",
     "sync": "node scripts/sync.mjs",
-    "setup": "yarn install && yarn build:dev",
-    "test": "yarn run vitest --ui --open=false",
+    "setup": "npm install && npm build:dev",
+    "test": "npm run vitest --ui --open=false",
     "test:docker": "docker-compose -f docker-compose.test.yaml up --build --renew-anon-volumes -d",
     "test:stop": "docker-compose -f docker-compose.dev.yaml down --volumes --rmi local",
     "lint": "turbo run lint",
@@ -32,28 +27,36 @@
     "build": "turbo run build",
     "docker:upload": "turbo run docker:upload --concurrency=1"
   },
-  "packageManager": "yarn@4.0.2",
   "devDependencies": {
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
     "@vitest/ui": "^0.33.0",
     "eslint": "^8.56.0",
-    "eslint-config-custom": "workspace:*",
     "happy-dom": "^10.6.3",
     "husky": "^8.0.0",
     "prettier": "2.8.8",
-    "prettier-config-custom": "workspace:*",
-    "tsconfig-custom": "workspace:*",
+    "eslint-config-custom": "*",
+    "prettier-config-custom": "*",
+    "tsconfig-custom": "*",
     "turbo": "latest",
     "typescript": "^5.0.4",
     "vitest": "^0.33.0"
   },
   "dependencies": {
+    "@types/node": "^20.14.9",
     "@yarnpkg/pnpify": "^4.0.0-rc.45",
+    "database": "^",
     "dotenv": "^16.4.5",
     "dotenv-cli": "^7.4.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.0",
-    "react-dom": "^18.2.0"
-  }
+    "react-dom": "^18.2.0",
+    "workspace": "^0.0.1-preview.1"
+  },
+  "packageManager": "npm@10.5.0",
+  "workspaces": [
+    "apps/*",
+    "configs/*",
+    "packages/*"
+  ]
 }

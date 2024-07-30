@@ -1,20 +1,12 @@
-import app from "../app.ts";
+import app from "../app";
 import http from "http";
 import { AddressInfo } from "net";
 import { createHttpTerminator } from "http-terminator";
-
+const dotenv = require('dotenv')
+dotenv.config();
 // Attempt a database connection
 console.info("Connecting to database...");
-try {
-  // This intrinsically connects to the database
-  require("./database-connection.ts");
-  console.log("Successfully connected to the database");
-} catch (error) {
-  // Log any errors
-  console.error(`Unable to establish database connection:
-  ${error}`);
-  process.exit(1); // Then exit
-}
+// This intrinsically connects to the database
 
 // Get port from environment and store in Express
 const port: string | undefined = process.env.BACKEND_PORT;
