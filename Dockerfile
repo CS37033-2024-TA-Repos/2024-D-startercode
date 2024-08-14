@@ -17,14 +17,11 @@ ARG POSTGRES_PORT
 WORKDIR /$WORKDIR
 
 # Copy the basic stuff everything should have
-COPY [".pnp.cjs", ".pnp.loader.mjs", ".yarnrc.yml", "./"]
-COPY .yarn .yarn
-
 
 # Base level installer for packages and files
 FROM base AS installer
 WORKDIR /$WORKDIR
-COPY . /$WORKDIR
+COPY .. /$WORKDIR
 
 
 # Production basics (ports, env, etc)
@@ -52,10 +49,10 @@ FROM installer AS prod-frontend-builder
 WORKDIR /$WORKDIR
 
 # Build the unplugged files and cache stuff for this specific OS
-RUN yarn install --immutable --immutable-cache --check-cache
+RUN npm install --production
 
 # This creates a trimmed image that is frontend and its dependencies only
-RUN yarn turbo prune --scope=frontend --docker
+RUN npx turbo prune --scope=frontend --compose-files
 
 
 # Production front builder. Creates a maximally trimmed out image
@@ -66,10 +63,10 @@ WORKDIR /$WORKDIR
 RUN rm -r apps/backend/tests
 
 # Build the unplugged files and cache stuff for this specific OS
-RUN yarn install --immutable --immutable-cache --check-cache
+RUN npm install --production
 
 # This creates a trimmed image that is frontend and its dependencies only
-RUN yarn turbo prune --scope=backend --docker
+RUN npx turbo prune --scope=backend --compose-files
 
 
 
@@ -81,17 +78,15 @@ WORKDIR /$WORKDIR
 COPY --from=prod-frontend-builder ["/$WORKDIR/out/json", "/$WORKDIR/out/yarn.lock", "/$WORKDIR/out/full", "./"]
 
 # Validate the install
-RUN yarn install --immutable
+RUN npm install --immutable
 
 # Perform any building necessary
-RUN yarn turbo run build
+RUN npx turbo run build
 
-# This trims out all non-production items
-RUN yarn workspaces focus --all --production
 
 # Use entrypoint (since this contianer should be run as-is)
 # Simply serve the frontend single (so that everything goes to index.html) and the prod port
-ENTRYPOINT yarn workspace frontend run deploy
+ENTRYPOINT npm run deploy -w frontend
 
 # Healthceck to determine if we're actually still serving stuff, just attempt to get the URL
 # If that fails, try exiting gracefully (SIGTERM), and if that fails force the container to die with SIGKILL.
@@ -116,18 +111,17 @@ ENV POSTGRES_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_
 COPY --from=prod-backend-builder ["/$WORKDIR/out/json", "/$WORKDIR/out/yarn.lock", "/$WORKDIR/out/full", "./"]
 
 # Validate the install
-RUN yarn install --immutable
+RUN npm install --production
 
 # Run the build task
-RUN yarn turbo run build
+RUN npx turbo run build
 
-# This trims out all non-production items
-RUN yarn workspaces focus --all --production
+# TODO yarn workspace database run migrate:deploy && add a migrate step
 
 # Use entrypoint (since this contianer should be run as-is)
 # Simply run the migrate:deploy and then deploy
 # Migrate MUST BE DONE AS PART OF THE ENTRYPOINT so that the database is running
-ENTRYPOINT yarn workspace database run migrate:deploy && yarn workspace backend run deploy
+ENTRYPOINT npm run deploy -w backend
 
 # Healthceck to determine if we're actually still serving stuff, just attempt to get the URL
 # If that fails, try exiting gracefully (SIGTERM), and if that fails force the container to die with SIGKILL.
@@ -156,8 +150,10 @@ ENV POSTGRES_CONTAINER=$POSTGRES_CONTAINER
 ENV POSTGRES_PORT=$POSTGRES_PORT
 ENV POSTGRES_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_CONTAINER}:${POSTGRES_PORT}/${POSTGRES_DB}?schema=public"
 
+RUN npm install
+
 # Run with CMD, since dev may want to use other commands
-CMD ["yarn", "turbo", "run", "dev:push", "--filter=backend"]
+CMD ["npx", "turbo", "run", "dev", "--filter=backend"]
 
 
 
@@ -178,8 +174,10 @@ ENV BACKEND_PORT=$BACKEND_PORT
 ARG BACKEND_SOURCE
 ENV BACKEND_SOURCE=$BACKEND_SOURCE
 
+RUN npm install
+
 # Run with CMD, since dev may want to use other commands
-CMD ["yarn", "turbo", "run", "dev", "--filter=frontend"]
+CMD ["npx", "turbo", "run", "dev", "--filter=frontend"]
 
 # No need for a healthcheck (this is dev, so why bother)
 
@@ -205,4 +203,4 @@ ENV BACKEND_SOURCE=$BACKEND_SOURCE
 RUN yarn run build
 
 # Run with CMD, since dev may want to use other commands
-CMD ["yarn", "run", "vitest", "--ui", "--open=false"]
+CMD ["npx", "run", "vitest", "--ui", "--open=false"]

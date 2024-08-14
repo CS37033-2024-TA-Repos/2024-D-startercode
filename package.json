@@ -8,22 +8,23 @@
     "type": "git",
     "url": ""
   },
+  "packageManager": "npm@10.5.0",
   "scripts": {
     "fix": "node scripts/fix.mjs",
-    "dev": "dotenv -e ./.env -- turbo run dev --env-mode=loose",
-    "dev:docker": "docker-compose -f docker-compose.dev.yaml up --build --renew-anon-volumes -d",
-    "db": "docker-compose -f docker-compose.db.yaml up --build",
-    "dev:stop": "docker-compose -f docker-compose.dev.yaml down --volumes --rmi local",
-    "deploy": "docker-compose -f docker-compose.prod.yaml up --build -d",
-    "deploy:stop": "docker-compose -f docker-compose.prod.yaml down",
+    "dev": "dotenv -e ./env/.env -c ./env./.env.local -- turbo run dev --env-mode=loose",
+    "dev-wpi": "dotenv -e ./env/.env -c ./env/.env.wpi -- turbo run dev --env-mode=loose",
+    "dev:docker": "docker-compose -f compose-files/docker-compose.dev.yaml up --build --renew-anon-volumes -d",
+    "db": "docker-compose -f compose-files/docker-compose.db.yaml up --build",
+    "dev:stop": "docker-compose -f compose-files/docker-compose.dev.yaml down --volumes --rmi local",
+    "deploy": "docker-compose -f compose-files/docker-compose.prod.yaml up --build -d",
+    "deploy:stop": "docker-compose -f compose-files/docker-compose.prod.yaml down",
     "sync": "node scripts/sync.mjs",
     "setup": "npm install && npm build:dev",
     "test": "npm run vitest --ui --open=false",
-    "test:docker": "docker-compose -f docker-compose.test.yaml up --build --renew-anon-volumes -d",
-    "test:stop": "docker-compose -f docker-compose.dev.yaml down --volumes --rmi local",
+    "test:docker": "docker-compose -f compose-files/docker-compose.test.yaml up --build --renew-anon-volumes -d",
+    "test:stop": "docker-compose -f compose-files/docker-compose.dev.yaml down --volumes --rmi local",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
-    "postinstall": "husky install || exit 0",
     "build": "turbo run build",
     "docker:upload": "turbo run docker:upload --concurrency=1"
   },
@@ -44,7 +45,6 @@
   },
   "dependencies": {
     "@types/node": "^20.14.9",
-    "@yarnpkg/pnpify": "^4.0.0-rc.45",
     "database": "^",
     "dotenv": "^16.4.5",
     "dotenv-cli": "^7.4.0",
@@ -53,7 +53,6 @@
     "react-dom": "^18.2.0",
     "workspace": "^0.0.1-preview.1"
   },
-  "packageManager": "npm@10.5.0",
   "workspaces": [
     "apps/*",
     "configs/*",

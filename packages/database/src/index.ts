@@ -16,7 +16,7 @@ class Database {
         if(this.#db.isInitialized) {
             return this.#db;
         } else {
-           this.#db.initialize().then(() => {console.log("re initlized the database")})
+           this.#db.initialize().then(() => {console.log("re initialized the database")})
            return this.#db;
         }
     }
