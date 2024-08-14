@@ -1,13 +1,13 @@
-import "reflect-metadata";
-import { DataSource } from "typeorm";
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const typeorm = require("typeorm"); // we are doing it this way so that migrations can be run
 
- const AppDataSource = new DataSource({
+ const AppDataSource = new typeorm.DataSource({
     type: "postgres",
-    host: process.env.POSTGRES_HOST!,
-    port: parseInt(process.env.POSTGRES_PORT!),
-    username:   process.env.POSTGRES_USER!,
-    password: process.env.POSTGRES_PASSWORD!,
-    database: process.env.POSTGRES_DB!,
+    host: process.env.POSTGRES_HOST,
+    port: parseInt(process.env.POSTGRES_PORT),
+    username:   process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD,
+    database: process.env.POSTGRES_DB,
     synchronize: true,
     logging: false,
     entities: ["./entity/**/*.{ts,js}"],
@@ -15,4 +15,4 @@ import { DataSource } from "typeorm";
     subscribers: [],
 });
 
-export default AppDataSource;
+module.exports = AppDataSource;
