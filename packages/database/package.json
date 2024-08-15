@@ -15,6 +15,7 @@
    },
    "scripts": {
       "start": "node --loader ts-node/esm src/index.ts",
-      "migrate": "npx typeorm migration:run -d ./src/data-source.ts"
+      "migrate": "npx typeorm-ts-node-commonjs migration:run -d ./src/data-source.ts",
+      "generate": "npx typeorm-ts-node-commonjs migration:generate -d ./src/data-source.ts ./src/data-source.ts/ "
    }
 }

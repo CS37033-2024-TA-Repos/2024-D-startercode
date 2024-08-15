@@ -1,4 +1,3 @@
-import AppDataSource from "database/src/data-source";
 import express, { Router, Request, Response } from "express";
 import Highscore from "../../../../packages/database/src/entity/Highscore";
 import DataBaseSingleton from "../bin/DataBaseSingleton.ts";
