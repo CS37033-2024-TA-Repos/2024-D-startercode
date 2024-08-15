@@ -116,7 +116,7 @@ RUN npm install --production
 # Run the build task
 RUN npx turbo run build
 
-# TODO yarn workspace database run migrate:deploy && add a migrate step
+RUN npm migrate:prod
 
 # Use entrypoint (since this contianer should be run as-is)
 # Simply run the migrate:deploy and then deploy
@@ -151,6 +151,7 @@ ENV POSTGRES_PORT=$POSTGRES_PORT
 ENV POSTGRES_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_CONTAINER}:${POSTGRES_PORT}/${POSTGRES_DB}?schema=public"
 
 RUN npm install
+
 
 # Run with CMD, since dev may want to use other commands
 CMD ["npx", "turbo", "run", "dev", "--filter=backend"]

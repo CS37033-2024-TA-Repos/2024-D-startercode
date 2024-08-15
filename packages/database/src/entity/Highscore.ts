@@ -7,6 +7,10 @@ export default class Highscore {
 
     @Column({type:"integer",nullable:false})
     score: number;
+
+    @Column({type:"text", nullable:false})
+    test:string;
+
 }
 
 

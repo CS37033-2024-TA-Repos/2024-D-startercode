@@ -75,7 +75,7 @@ services:
       <<: *prod-args
     build:
       # Taken from our github repo
-      context: ..
+      context: ../..
       args:
         <<: *prod-args
       # Use the prod-frontend stage
@@ -108,7 +108,7 @@ services:
       <<: [ *prod-args, *db-args, *db-loc ]
     build:
       # Taken from our github repo
-      context: ..
+      context: ../..
       args:
         # Ignore the warnings, this just merges those three
         <<: [*prod-args, *db-args, *db-loc]

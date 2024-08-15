@@ -2,5 +2,5 @@
   "legacyWatch": true,
   "watch": ["../../packages", "./"],
   "ext": "cjs,mjs,js,cts,mts,ts,json,prisma",
-  "exec": "(npx turbo run build:dev) && (node --inspect=0.0.0.0 -r ts-node/register src/bin/www.ts)",
+  "exec": "(npx turbo run build:dev) && (node --inspect=0.0.0.0 -r ts-node/register src/bin/www.ts)"
 }

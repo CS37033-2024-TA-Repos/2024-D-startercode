@@ -41,7 +41,7 @@ services:
     # Use the standard Dockerfile
     build:
       # Taken from root
-      context: ..
+      context: ../..
       # Use the dev-args (defined above)
       args: *dev-args
       # Use the dev-frontend stage
@@ -75,7 +75,7 @@ services:
     # Use the standard Dockerfile
     build:
       # Taken from root
-      context: ..
+      context: ../..
       # Use the dev-args (defined above), along with the DB info, port, and URL
       args:
         <<: [*dev-args, *db-loc, *db-args]

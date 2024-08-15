@@ -1,7 +1,6 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const typeorm = require("typeorm"); // we are doing it this way so that migrations can be run
+import {DataSource} from "typeorm";
 
- const AppDataSource = new typeorm.DataSource({
+const AppDataSource = new DataSource({
     type: "postgres",
     host: process.env.POSTGRES_HOST,
     port: parseInt(process.env.POSTGRES_PORT),
@@ -10,9 +9,9 @@ const typeorm = require("typeorm"); // we are doing it this way so that migratio
     database: process.env.POSTGRES_DB,
     synchronize: true,
     logging: false,
-    entities: ["./entity/**/*.{ts,js}"],
-    migrations: ["./migrations/**/*.{ts,js}"],
-    subscribers: [],
+    entities: ["./src/entity/**/*.{ts,js}"],
+    migrations: ["./src/migration/*{.ts,.js}"]
 });
 
-module.exports = AppDataSource;
+export default AppDataSource;
+
